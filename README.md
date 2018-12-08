@@ -32,7 +32,7 @@ max_len_caption: defines the max length of the caption we used, if the caption l
 transform: defined the transformation we will apply to the image, default is none.
 
 The architecture:
-One image with one caption is one basic item in the final data set. Each image has five captions. After read in the image, there might be grey scale images. So we make sure each image has 'RGB' channels, the image size is 3*224*224, each pixel is from 0 to 1 and do the defined transformation.
+One image with one caption is one basic item in the final data set. Each image has five captions. After read in the image, there might be grey scale images. So we make sure each image has 'RGB' channels, the image size is 3,224,224, each pixel is from 0 to 1 and do the defined transformation.
 
 Based on the image-id we chose, use COCOapi to get 5 captions. After removing too long captions and sampling with replacement, we get 5 captions for the image. Each caption along with the image is one item. We encoded the caption with the word-map we created before. Adding <start> at the beginning of the sentence which will be used as the original input of the LSTM Cell. Adding <end> at the end of the sentence which will give the guide when we should stop the sentence. Encode the rest captions, if the dictionary doesn't have the word, it will be <unk>. If the length of the caption is smaller than the max length, pad the sentence with <pad>. The caption length is the number of original tokens plus two.
   
