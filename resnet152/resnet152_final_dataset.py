@@ -37,6 +37,7 @@ class CaptionDataset(Dataset):
         annIds = self.coco_caps.getAnnIds(imgIds=img['id']) 
         anns = self.coco_caps.loadAnns(annIds) #A list with 5 dictionaries 
         tokens = [caption['caption'].replace('.', '').split() for caption in anns]
+        tokens = [list(map(lambda x:x.lower(), token)) for token in tokens]
         for token in tokens:
             if len(token) > self.max_len_caption:
                     tokens.remove(token)

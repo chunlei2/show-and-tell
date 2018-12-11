@@ -40,7 +40,7 @@ embed_dim = 2048
 decoder_dim = 512 # Can be adjusted
 dropout_rate = 0.5
 # Training hyperparameters
-num_epochs = 20 # Not important, because it will usually strike the walltime before finishing this
+num_epochs = 1 # Not important, because it will usually strike the walltime before finishing this
 # workers = 1
 encoder_lr = 1e-4
 decoder_lr = 1e-4
@@ -52,7 +52,7 @@ batch_size = 32 # 32 seems to be the maximum safe batch size to avoid CUDA error
 #batch_size = 48 # May need to shrink to 32, in case of out-of-memory error
 #fine_tune_encoder = False # Allow or prevent the computation of gradients for convolutional blocks 2 through 4 of the encoder?
 fine_tune_encoder = True # Try to improve the model
-checkpoint = 'resnet50_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar'
+checkpoint = None
 # checkpoint = "checkpoint_"+dataset_name+".pth.tar" # Path to checkpoint
 start_epoch = 0
 epochs_since_improvement = 0

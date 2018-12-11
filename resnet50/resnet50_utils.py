@@ -22,11 +22,11 @@ def save_accuracy_checkpoint(data_name, epoch, epochs_since_improvement, ave_fre
     :param data_name: base name of processed dataset
     :param epoch: epoch number
     :param epochs_since_improvement: number of epochs since last improvement in BLEU-4 score
-    :param encoder: encoder model
-    :param decoder: decoder model
-    :param encoder_optimizer: optimizer to update encoder's weights, if fine-tuning
-    :param decoder_optimizer: optimizer to update decoder's weights
-    :param bleu4: validation BLEU-4 score for this epoch
+    :param ave_freq_train_loss: Recorded average training loss per 100 batches in an epoch
+    :param ave_epoch_train_loss: Average training loss in an epoch
+    :param ave_freq_val_loss: Recorded average validation loss per 100 batches in an epoch
+    :param ave_epoch_val_loss: Average validation loss in an epoch
+    :param bleu4s: validation BLEU-4 score for this epoch
     :param is_best: is this checkpoint the best so far?
     """
     state = {'epoch': epoch,

@@ -22,11 +22,11 @@ except ImportError:
     os.system("python -m pip install --user nltk")
     from nltk.translate.bleu_score import corpus_bleu
 
-from resnet152_utils import clip_gradient, save_accuracy_checkpoint, save_checkpoint, adjust_learning_rate, compute_accuracy, AverageMeter
-from resnet152_models import Encoder, Decoder
-from resnet152_final_dataset import CaptionDataset
+from resnet101_utils import clip_gradient, save_accuracy_checkpoint, save_checkpoint, adjust_learning_rate, compute_accuracy, AverageMeter
+from resnet101_models import Encoder, Decoder
+from resnet101_final_dataset import CaptionDataset
 
-print('This is resnet152 with fine tuned last two layer')
+print('This is resnet101 with fine tuned last two layer')
 # Device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
@@ -38,7 +38,7 @@ dataset_name = 'coco_5_cap_per_img_5_min_word_freq' # Should be saved in data_fo
 # Model hyperparameters
 embed_dim = 2048
 decoder_dim = 512 # Can be adjusted
-dropout_rate = 0.5
+dropout_rate = 0.8
 # Training hyperparameters
 num_epochs = 20 # Not important, because it will usually strike the walltime before finishing this
 # workers = 1
@@ -52,7 +52,7 @@ batch_size = 32 # 32 seems to be the maximum safe batch size to avoid CUDA error
 #batch_size = 48 # May need to shrink to 32, in case of out-of-memory error
 #fine_tune_encoder = False # Allow or prevent the computation of gradients for convolutional blocks 2 through 4 of the encoder?
 fine_tune_encoder = True # Try to improve the model
-checkpoint = 'resnet152_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar'
+checkpoint = 'resnet101_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar'
 # checkpoint = "checkpoint_"+dataset_name+".pth.tar" # Path to checkpoint
 start_epoch = 0
 epochs_since_improvement = 0
