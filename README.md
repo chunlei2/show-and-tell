@@ -18,3 +18,5 @@ For resnet 152, tune all the parameters in the decoder, only tune the last layer
 
 The general overview of the whole project is https://github.com/chunlei2/show-and-tell/blob/master/IE534_final_report.pdf.
 
+## Example:
+![Image of Web image](https://github.com/chunlei2/show-and-tell/blob/master/result.png)
